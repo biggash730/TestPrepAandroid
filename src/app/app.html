@@ -1,0 +1,46 @@
+<ion-menu [content]="content" id="menu-avatar">
+    <ion-header>
+        <ion-navbar color="nm1" align="center">
+            <!--<button ion-button menuToggle>
+                <ion-icon name="md-grid"></ion-icon>
+              </button>-->
+            <ion-title>Menu</ion-title>
+        </ion-navbar>
+    </ion-header>
+    <ion-content no-padding style="background-color: #d3d3d3">
+        <div class="profile-card">
+            <div align="center" style="margin-bottom: 10px;">
+                <img class="profile-image" [src]="user.image || '../../assets/imgs/user.png'">
+            </div>
+            <h1 color="nm2">{{user.name}}</h1>
+            <p color="nm2">
+                {{user.phoneNumber}}
+            </p>
+        </div>
+        <ion-list>
+            <button menuClose ion-item (click)="openPage('home')" style="background-color: #d3d3d3;">
+                    <span style="font-size: 1.2em;">Home</span>
+                    <ion-icon name="md-information-circle" item-end color="nm2"></ion-icon>
+                  </button>
+            <button menuClose ion-item (click)="openPage('test')" style="background-color: #d3d3d3;">
+                    <span style="font-size: 1.2em;">Take Test</span>
+                    <ion-icon name="md-help-circle" item-end color="nm3"></ion-icon>
+                  </button>
+            <button menuClose ion-item (click)="openPage('results')" style="background-color: #d3d3d3;">
+                    <span style="font-size: 1.2em;">Results</span>
+                    <ion-icon name="md-checkmark-circle" item-end color="fb"></ion-icon>
+                  </button>
+            <button menuClose ion-item (click)="openPage('stats')" style="background-color: #d3d3d3;">
+                    <span style="font-size: 1.2em;">Statistics</span>
+                    <ion-icon name="md-stats" item-end color="nm1"></ion-icon>
+                  </button>
+            <button menuClose ion-item (click)="openPage('settings')" style="background-color: #d3d3d3;">
+                    <span style="font-size: 1.2em;">Settings</span>
+                    <ion-icon name="md-settings" item-end color="secondary"></ion-icon>
+                      </button>
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

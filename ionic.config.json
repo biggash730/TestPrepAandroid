@@ -1,0 +1,7 @@
+{
+    "name": "nm_test_prep",
+    "integrations": {
+        "cordova": {}
+    },
+    "type": "ionic-angular"
+}

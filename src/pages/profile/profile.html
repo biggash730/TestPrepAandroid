@@ -1,0 +1,58 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="nm1">
+        <ion-title>
+            Profile
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <div align="center" style="margin-top: 10%">
+            <img class="profile-image" [src]="profile.image || '../../assets/imgs/user.png'">
+        </div>
+        <div style="margin: 10px;">
+            <button ion-button outline icon-start color="fb" (click)="changeImage()">
+                <ion-icon name='md-image' is-active="false"></ion-icon>
+                Change
+              </button>
+        </div>
+        <ion-item-divider color="light">
+            <h2 item-start>
+                Profile Information
+            </h2>
+            <ion-note item-end color="secondary">
+                <ion-icon name="md-create" (click)="UpdateProfile()">
+                </ion-icon>
+            </ion-note>
+        </ion-item-divider>
+        <ion-item>
+            <h2>{{profile.name}}</h2>
+            <ion-note item-end>Name</ion-note>
+        </ion-item>
+        <ion-item>
+            <h2>{{profile.phoneNumber}}</h2>
+            <ion-note item-end>Phone</ion-note>
+        </ion-item>
+        <ion-item>
+            <h2>{{profile.email}}</h2>
+            <ion-note item-end>Email</ion-note>
+        </ion-item>
+        <ion-item>
+            <h2>{{profile.sex}}</h2>
+            <ion-note item-end>Sex</ion-note>
+        </ion-item>
+        <ion-item>
+            <h2>{{profile.created | date:'mediumDate'}}</h2>
+            <ion-note item-end>Registered On</ion-note>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

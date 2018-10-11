@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <button ion-button menuToggle>
+    <ion-icon name="md-grid"></ion-icon>
+  </button>
+        <ion-title>NM Exams Prep</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-row class="logo-row">
+        <ion-col>
+            <img src="assets/imgs/logo.png" class="center" id="loading" />
+        </ion-col>
+    </ion-row>
+    <ion-list>
+        <ion-card style="text-align: center; padding: 10px; background-color: #9a780d; color: white;font-size: 20px; margin-left: 0px; margin-right: 0px; width: 100%;" (click)="openTests()">
+            <ion-icon name="md-help-circle"></ion-icon> <span>Take Test</span>
+        </ion-card>
+        <ion-card style="text-align: center; padding: 10px; background-color: #4867AA; color: white;font-size: 20px; margin-left: 0px; margin-right: 0px; width: 100%;" (click)="openResults()">
+            <ion-icon name="md-checkmark-circle"></ion-icon> <span>View Results</span>
+        </ion-card>
+        <ion-card style="text-align: center; padding: 10px; background-color: #ec3237; color: white;font-size: 20px; margin-left: 0px; margin-right: 0px; width: 100%;" (click)="openStats()">
+            <ion-icon name="md-stats"></ion-icon> <span>Statistics</span>
+        </ion-card>
+        <ion-card style="text-align: center; padding: 10px; background-color: #32db64; color: white;font-size: 20px; margin-left: 0px; margin-right: 0px; width: 100%;" (click)="openSettings()">
+            <ion-icon name="md-settings"></ion-icon> <span>Settings</span>
+        </ion-card>
+    </ion-list>
+
+</ion-content>

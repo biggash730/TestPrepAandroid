@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <ion-title>Subscription</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-fab right bottom *ngIf="!subscription || subscription.status === 'Expired'">
+        <button ion-fab class="add-fab" (click)="AddSubscription()" color="nm2">
+              <ion-icon name="md-add"></ion-icon>
+            </button>
+    </ion-fab>
+    <ion-card *ngIf="!subscription">
+        <ion-card-content>
+            <ion-row class="centerSpinner">
+                <ion-col col-12>
+                    No active subscription found.<br/> Please add a subscription and activate it by paying with your mobile money account...
+                    <br/>
+                    <ion-spinner icon="circles">
+                    </ion-spinner>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="subscription">
+        <ion-card-header>
+            {{subscription.Plan}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-6 text-right>
+                    <div>Duration:</div>
+                    <div>Amount:</div>
+                </ion-col>
+                <ion-col col-6 class="package-label">
+                    <div>{{subscription.duration}} month(s)</div>
+                    <div>{{subscription.amount | currency: 'GHS '}}</div>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="subscription.status === 'Paid'">
+                <ion-col col-6 text-right>
+                    <div>Start Date:</div>
+                    <div>End Date:</div>
+                </ion-col>
+                <ion-col col-6>
+                    <div>{{subscription.startDate | date:'medium'}}</div>
+                    <div>{{subscription.endDate | date:'medium'}}</div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+    <!--<div style="padding: 5px 16px;" *ngIf="subscription && subscription.status === 'Paid'">
+        <button type="button" ion-button block color="danger" (click)="cancelSubscription()">Cancel Subscription</button>
+    </div>-->
+
+    <div style="padding: 5px 16px;" *ngIf="subscription && subscription.status === 'Pending'">
+        <button type="button" ion-button block class="btn-yellow" (click)="makePayment()">Proceed to Payment</button>
+        <button type="button" ion-button block color="danger" (click)="removeSubscription()">Remove Subscription</button>
+    </div>
+</ion-content>

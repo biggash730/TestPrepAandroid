@@ -1,0 +1,18 @@
+<ion-content>
+    <div padding class="verify-page" style="margin-top: 30%;">
+        <ion-row style="margin-top: 5%;">
+            <ion-col>
+                <ion-list inset>
+                    <h2 style="color: #183f03;font-size: 38px; font-family: script-mt-bold-font; margin-top: 0px;">Phone Number Verification</h2>
+                    <p style="color: #9a780d;font-weight: 400;">Please enter your verification code to complete the logon process...
+                    </p>
+                    <ion-item>
+                        <ion-icon name="md-code-working" item-start color="nm1" class="input-icon"></ion-icon>
+                        <ion-input type="number" [(ngModel)]="code" placeholder="XXXX" step="1" min="0" max="9999"></ion-input>
+                    </ion-item>
+                    <button ion-button type="submit" block class="login-button" color="nm2" (click)="verify()">Continue</button>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-content>
+    <div padding class="login-page" style="margin-top: 30%;">
+        <ion-row>
+            <ion-col>
+                <img src="assets/imgs/logo.png" class="center" id="loading" />
+            </ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 5%;">
+            <ion-col>
+                <ion-list inset>
+                    <p style="color: #9a780d;font-weight: 400;">Please enter a valid mobile number to continue...
+                    </p>
+                    <ion-item>
+                        <ion-icon name="md-call" item-start color="nm1" class="input-icon"></ion-icon>
+                        <ion-input type="tel" [(ngModel)]="phoneNumber" placeholder="0244123456"></ion-input>
+                    </ion-item>
+                    <button ion-button block class="login-button" color="nm2" (click)="login()">Continue</button>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
