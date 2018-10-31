@@ -37,7 +37,7 @@ export class PhotoPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    //console.log('ionViewDidLoad ProfilePage');
   }
 
   profileUpdated() {

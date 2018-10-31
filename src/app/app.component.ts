@@ -51,6 +51,7 @@ export class MyApp {
 
   getUser() {
     this.storage.get(this.userService.CURRENT_USER).then((val) => {
+      //console.log(val)
       if(val)this.user = JSON.parse(val)
     });
   }
@@ -59,7 +60,7 @@ export class MyApp {
     this.backendService.getProfile().subscribe(data => {
       //console.log(data)
       if (data.success) {
-        this.storage.set(this.userService.CURRENT_USER, data.data)
+        this.storage.set(this.userService.CURRENT_USER, JSON.stringify(data.data))
         this.user = data.data;
       }
     }, (error) => {
