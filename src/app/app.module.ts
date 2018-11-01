@@ -24,26 +24,6 @@ import { UpdateProfilePage } from '../pages/update-profile/update-profile';
 import { SettingsPage } from '../pages/settings/settings';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 
-
-import { FarmersPage } from '../pages/farmers/farmers';
-import { AddfarmerPage } from '../pages/addfarmer/addfarmer';
-import { UpdatefarmerPage } from '../pages/updatefarmer/updatefarmer';
-import { ViewfarmerPage } from '../pages/viewfarmer/viewfarmer';
-import { FarmsPage } from '../pages/farms/farms';
-import { AddfarmPage } from '../pages/addfarm/addfarm';
-import { ViewfarmPage } from '../pages/viewfarm/viewfarm';
-import { UpdatefarmPage } from '../pages/updatefarm/updatefarm';
-import { GetLocationPage } from '../pages/getlocation/getlocation';
-import { LocationPage } from '../pages/location/location';
-import { SeasonsPage } from '../pages/seasons/seasons';
-import { AddseasonPage } from '../pages/addseason/addseason';
-import { ViewseasonPage } from '../pages/viewseason/viewseason';
-import { ServicesPage } from '../pages/services/services';
-import { AddservicePage } from '../pages/addservice/addservice';
-import { ViewservicePage } from '../pages/viewservice/viewservice';
-
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -76,23 +56,7 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     TermsPage,
     PrivacyPage,
     SupportPage,
-    SubscriptionPage,
-    FarmersPage,
-    AddfarmerPage,
-    ViewfarmerPage,
-    UpdatefarmerPage,
-    FarmsPage,
-    AddfarmPage,
-    ViewfarmPage,
-    UpdatefarmPage,
-    GetLocationPage,
-    LocationPage,
-    SeasonsPage,
-    AddseasonPage,
-    ViewseasonPage,
-    ServicesPage,
-    AddservicePage,
-    ViewservicePage
+    SubscriptionPage
   ],
   imports: [
     BrowserModule,
@@ -117,23 +81,7 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     TermsPage,
     PrivacyPage,
     SupportPage,
-    SubscriptionPage,
-    FarmersPage,
-    AddfarmerPage,
-    ViewfarmerPage,
-    UpdatefarmerPage,
-    FarmsPage,
-    AddfarmPage,
-    ViewfarmPage,
-    UpdatefarmPage,
-    GetLocationPage,
-    LocationPage,
-    SeasonsPage,
-    AddseasonPage,
-    ViewseasonPage,
-    ServicesPage,
-    AddservicePage,
-    ViewservicePage
+    SubscriptionPage
   ],
   providers: [
     StatusBar,

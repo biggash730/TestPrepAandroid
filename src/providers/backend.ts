@@ -41,6 +41,15 @@ export class BackendProvider {
             .map(res => res.json());
     }
 
+    getActiveSubscription() {
+        return this.http.get(this.userService.baseUrl + "subscriptions/getactive")
+            .map(res => res.json());
+    }
+    getSubscriptions(obj) {
+        return this.http.post(this.userService.baseUrl + "subscriptions/query",obj)
+            .map(res => res.json());
+    }
+
     
 
     getNewEvents() {

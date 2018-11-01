@@ -57,19 +57,6 @@ export class ProfilePage {
     this.navCtrl.push(PhotoPage);
   }
 
-  AddId(){
-    //this.navCtrl.push(AddidPage);
-  }
-  UpdateId(data) {
-    //this.navCtrl.push(UpdateidPage, data);
-  }
-
-  AddDoc(){
-    //this.navCtrl.push(AdddocPage);
-  }
-  UpdateDoc(data) {
-    //this.navCtrl.push(UpdatedocPage, data);
-  }
 
   getProfile(){
     let self = this
