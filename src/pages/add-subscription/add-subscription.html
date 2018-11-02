@@ -6,14 +6,14 @@
 
 <ion-content>
     <ion-list>
-        <ion-list-header color="nm4" style="font-size: x-large;">
-            Tap to add a subscription plan.
+        <ion-list-header color="nm3" style="font-size: x-large;">
+            Tap to add plan
         </ion-list-header>
-        <ion-card *ngFor="let plan of plans" style=" border: 2px solid #009688;" (click)="AddSubscription(plan.id)">
+        <ion-card *ngFor="let plan of plans" style=" border: 2px solid #9a780d;" (click)="AddSubscription(plan.id)">
             <ion-item>
                 <h1>Plan: {{plan.name}}</h1>
                 <ion-row>
-                    <ion-col col-4 text-right>
+                    <ion-col col-4 text-left>
                         <div>Duration:</div>
                         <div>Amount:</div>
                     </ion-col>

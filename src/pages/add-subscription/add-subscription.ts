@@ -3,7 +3,6 @@ import { NavController, NavParams, LoadingController, AlertController, Loading, 
 import { Storage } from '@ionic/storage';
 import { BackendProvider } from '../../providers/backend';
 import { UserDataProvider } from '../../providers/user-data';
-import { PaymentsPage } from '../payments/payments';
 //import { LoginPage } from '../login/login';
 //import { PhotoPage } from '../photo/photo';
 
@@ -61,8 +60,8 @@ export class AddSubscriptionPage {
   AddSubscription(planId) {
     var self = this;
     let alert = this.alertCtrl.create({
-      title: 'Add Subscription',
-      message: 'Do you really want to add this Pubscription Plan?',
+      title: 'Add Subscription Plan',
+      message: 'Do you really want to add this Subscription Plan?',
       buttons: [
         {
           text: 'Cancel',
@@ -74,7 +73,6 @@ export class AddSubscriptionPage {
         {
           text: 'Yes',
           handler: () => {
-            let self = this
             let loader = this.loadingCtrl.create({
               content: "Adding Subscription"
             });
