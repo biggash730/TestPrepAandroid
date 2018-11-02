@@ -5,7 +5,7 @@ import { BackendProvider } from '../../providers/backend';
 import { UserDataProvider } from '../../providers/user-data';
 import { PaymentsPage } from '../payments/payments';
 import { AddSubscriptionPage } from '../add-subscription/add-subscription';
-//import { PhotoPage } from '../photo/photo';
+import { MakePaymentPage } from '../make-payment/make-payment';
 
 /**
  * Generated class for the AboutPage page.
@@ -50,6 +50,10 @@ export class SubscriptionPage {
 
   ViewPayments() {
     this.navCtrl.push(PaymentsPage);
+  }
+
+  MakePayment(data) {
+    this.navCtrl.push(MakePaymentPage, data);
   }
 
   newSubscription() {

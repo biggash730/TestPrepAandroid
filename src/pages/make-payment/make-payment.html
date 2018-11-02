@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <ion-title>Make Payment</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="summary-card">
+        <div class="summary-title">Subscription Summary</div>
+        <ion-card-content>
+            <ion-row>
+                <ion-col col-5 text-right class="subs-card-label">
+                    <div>Plan:</div>
+                    <div>Duration:</div>
+                    <div>Amount:</div>
+                </ion-col>
+                <ion-col col-7 text-left>
+                    <div>{{subscription.plan}}</div>
+                    <div>{{subscription.duration}} days</div>
+                    <div>{{subscription.amount | currency:'GHS '}}</div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <div text-center>
+        <i class="fa fa-mobile fa-3x" style="vertical-align: middle"></i>
+        <span text-uppercase style="color: orange">Mobile Money</span>
+    </div>
+    <ion-item>
+        <ion-label stacked>Select Provider</ion-label>
+        <ion-select [(ngModel)]="formData.network">
+            <ion-option *ngFor="let p of networks" [value]="p.provider">{{p.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label stacked>Momo Number</ion-label>
+        <ion-input type="text" [(ngModel)]="formData.number" placeholder="Mobile Money Number"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="formData.network === 'vodafone-gh'">
+        <ion-label stacked>Token</ion-label>
+        <ion-input type="text" [(ngModel)]="formData.token" placeholder="Token"></ion-input>
+    </ion-item>
+    <p style="text-align: center;color:#f53d3d;margin-bottom: 0px;">
+        Please ensure that you have entered the right data.
+    </p>
+    <br/>
+    <button ion-button block class="save-button" (click)="confirmPayment()" style="    background-color: #04700d;">Make Payment</button>
+</ion-content>

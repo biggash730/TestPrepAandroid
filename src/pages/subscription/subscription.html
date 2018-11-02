@@ -65,7 +65,7 @@
             <ion-item>
                 <p text-right><span ng-class="setStatus(sub.status)">{{sub.status}}</span></p>
                 <h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{sub.plan}}</h1>
-                <p>Subscription Date: {{sub.date | date:'medium'}}</p>
+                <p>Added On: {{sub.date | date:'medium'}}</p>
                 <ion-row>
                     <ion-col col-4 text-right>
                         <div>Duration:</div>
@@ -78,7 +78,7 @@
                 </ion-row>
                 <ion-row *ngIf="sub.status==='Pending' ">
                     <ion-col col-6>
-                        <button type="button " ion-button block small color="success" (click)="MakePayment(sub.id)">Add Payment</button>
+                        <button type="button " ion-button block small color="success" (click)="MakePayment(sub)">Add Payment</button>
                     </ion-col>
                     <ion-col col-6>
                         <button type="button " ion-button block small color="danger" (click)="removeSubscription(sub.id)">Remove</button>

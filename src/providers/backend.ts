@@ -65,6 +65,10 @@ export class BackendProvider {
         return this.http.get(this.userService.baseUrl + "subscriptions/add?planId="+id)
             .map(res => res.json());
     }
+    confirmPayment(obj) {
+        return this.http.post(this.userService.baseUrl + "payments",obj)
+            .map(res => res.json());
+    }
 
     
 
