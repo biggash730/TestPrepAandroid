@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <ion-title>Add Subscription Plan</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header color="nm4" style="font-size: x-large;">
+            Tap to add a subscription plan.
+        </ion-list-header>
+        <ion-card *ngFor="let plan of plans" style=" border: 2px solid #009688;" (click)="AddSubscription(plan.id)">
+            <ion-item>
+                <h1>Plan: {{plan.name}}</h1>
+                <ion-row>
+                    <ion-col col-4 text-right>
+                        <div>Duration:</div>
+                        <div>Amount:</div>
+                    </ion-col>
+                    <ion-col col-8 text-left>
+                        <div>{{plan.duration}} days</div>
+                        <div>{{plan.amount | currency:'GHS '}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+    </ion-list>
+</ion-content>

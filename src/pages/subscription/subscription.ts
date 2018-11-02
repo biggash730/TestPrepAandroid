@@ -3,8 +3,8 @@ import { NavController, NavParams, LoadingController, AlertController, Loading, 
 import { Storage } from '@ionic/storage';
 import { BackendProvider } from '../../providers/backend';
 import { UserDataProvider } from '../../providers/user-data';
-import { timingSafeEqual } from 'crypto';
-//import { LoginPage } from '../login/login';
+import { PaymentsPage } from '../payments/payments';
+import { AddSubscriptionPage } from '../add-subscription/add-subscription';
 //import { PhotoPage } from '../photo/photo';
 
 /**
@@ -34,6 +34,7 @@ export class SubscriptionPage {
     this.loader = this.loadingCtrl.create({
       content: ""
     });
+    this.subscriptions = []
     //this.start();
   }
   ionViewDidLoad() {
@@ -44,11 +45,11 @@ export class SubscriptionPage {
   }
 
   AddSubscription() {
-    //this.navCtrl.push(UpdateProfilePage);
+    this.navCtrl.push(AddSubscriptionPage);
   }
 
   ViewPayments() {
-    //this.navCtrl.push(PhotoPage);
+    this.navCtrl.push(PaymentsPage);
   }
 
   newSubscription() {
@@ -97,12 +98,59 @@ export class SubscriptionPage {
     }, 2000);
   }
 
+  removeSubscription(id) {
+    var self = this;
+    let alert = this.alertCtrl.create({
+      title: 'Delete Subscription',
+      message: 'Do you really want to delete this subscription?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            //console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            self.backendService.deleteSubscription(id).subscribe(data => {
+              if (data.success) {
+                self.start()
+              }
+            }, (error) => {
+              console.log(error);
+            });
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   start() {
     this.page = 1;
     this.filter = { pager: { page: this.page, size: this.size } };
     this.active = {};
+    this.subscriptions = []
     this.getActive()
     this.getList()
   }
+
+  setStatus(status: string) {
+    console.log(status)
+    switch (status) {
+        case "Free":
+            return "label-default"
+        case "Pending":
+            return "label-primary"
+        case "Paid":
+            return "label-success"
+        case "Expired":
+            return "label-danger"
+        case "Cancelled":
+            return "label-danger"
+    }
+}
 
 }

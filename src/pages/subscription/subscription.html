@@ -1,6 +1,15 @@
 <ion-header>
     <ion-navbar color="nm1">
+        <button ion-button menuToggle>
+            <ion-icon name="md-grid"></ion-icon>
+          </button>
         <ion-title>Subscription</ion-title>
+        <ion-buttons end>
+            <button (click)="ViewPayments()" ion-button icon-only clear>
+                                      <ion-icon name="md-cash" color="light">
+                                      </ion-icon>
+                                  </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
@@ -49,19 +58,34 @@
         </ion-card>
 
 
-        <ion-list-header>
+        <ion-list-header color="nm4" style="font-size: x-large;">
             Subscriptions
         </ion-list-header>
-        <ion-item>
-            <h2>Finn</h2>
-            <h3>Don't Know What To Do!</h3>
-            <p>I've had a pretty messed up day. If we just...</p>
-            <div style="padding: 5px 16px;" *ngIf="subscription && subscription.status === 'Pending'">
-                <button type="button" ion-button block class="btn-yellow" (click)="makePayment()">Proceed to Payment</button>
-                <button type="button" ion-button block color="danger" (click)="removeSubscription()">Remove Subscription</button>
-            </div>
-        </ion-item>
+        <ion-card *ngFor="let sub of subscriptions" style=" border: 2px solid #009688;">
+            <ion-item>
+                <p text-right><span ng-class="setStatus(sub.status)">{{sub.status}}</span></p>
+                <h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{sub.plan}}</h1>
+                <p>Subscription Date: {{sub.date | date:'medium'}}</p>
+                <ion-row>
+                    <ion-col col-4 text-right>
+                        <div>Duration:</div>
+                        <div>Amount:</div>
+                    </ion-col>
+                    <ion-col col-8 text-left>
+                        <div>{{sub.duration}} days</div>
+                        <div>{{sub.amount | currency:'GHS '}}</div>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="sub.status==='Pending' ">
+                    <ion-col col-6>
+                        <button type="button " ion-button block small color="success" (click)="MakePayment(sub.id)">Add Payment</button>
+                    </ion-col>
+                    <ion-col col-6>
+                        <button type="button " ion-button block small color="danger" (click)="removeSubscription(sub.id)">Remove</button>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+        <button ion-button full (click)="loadMore()" [hidden]="!(total > subscriptions.length)" *ngIf="subscriptions">Load More</button>
     </ion-list>
-
-
 </ion-content>

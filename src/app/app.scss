@@ -78,3 +78,31 @@
 .menu-inner {
     width: 250px !important;
 }
+
+.label-danger {
+    padding: 10px;
+    background-color: #f53d3d;
+    color: white;
+    border-radius: 15px;
+}
+
+.label-primary {
+    padding: 10px;
+    background-color: #387ef5;
+    color: white;
+    border-radius: 15px;
+}
+
+.label-default {
+    padding: 10px;
+    background-color: #aaa9a9;
+    color: #000000;
+    border-radius: 15px;
+}
+
+.label-success {
+    padding: 10px;
+    background-color: #32db64;
+    color: white;
+    border-radius: 15px;
+}

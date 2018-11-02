@@ -9,6 +9,7 @@ import { BackendProvider } from '../providers/backend';
 import { HomePage } from '../pages/home/home';
 import { IntroPage } from '../pages/intro/intro';
 import { SettingsPage } from '../pages/settings/settings';
+import { SubscriptionPage } from '../pages/subscription/subscription';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ export class MyApp {
   user: any;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public alertCtrl: AlertController, public userService: UserDataProvider, public storage: Storage, public backendService: BackendProvider, public events: Events) {
-    this.user = {name:""}
+    this.user = { name: "" }
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -29,21 +30,21 @@ export class MyApp {
       this.events.subscribe('Profile: Updated', () => {
         this.refreshUser();
       })
-    
-    //get user
-    this.storage.get(this.userService.HAS_LOGGED_IN).then((val) => {
-
-       //console.log(val)
-      var res = JSON.parse(val);
-      if (res) {
-        this.rootPage = HomePage;
-      } else {
-        this.rootPage = IntroPage;
-      }
 
       //get user
-      this.getUser() 
-    });
+      this.storage.get(this.userService.HAS_LOGGED_IN).then((val) => {
+
+        //console.log(val)
+        var res = JSON.parse(val);
+        if (res) {
+          this.rootPage = HomePage;
+        } else {
+          this.rootPage = IntroPage;
+        }
+
+        //get user
+        this.getUser()
+      });
 
 
     });
@@ -52,7 +53,7 @@ export class MyApp {
   getUser() {
     this.storage.get(this.userService.CURRENT_USER).then((val) => {
       //console.log(val)
-      if(val)this.user = JSON.parse(val)
+      if (val) this.user = JSON.parse(val)
     });
   }
 
@@ -70,17 +71,20 @@ export class MyApp {
   openPage(page: string) {
     switch (page) {
       case "home":
-      this.nav.setRoot(HomePage);
+        this.nav.setRoot(HomePage);
         break;
-        case "settings":
+      case "settings":
         this.nav.setRoot(SettingsPage);
-          break;
-    
+        break;
+      case "subscriptions":
+        this.nav.setRoot(SubscriptionPage);
+        break;
+
       default:
-      this.nav.setRoot(HomePage);
+        this.nav.setRoot(HomePage);
         break;
     }
-    
+
   }
 
   logout() {

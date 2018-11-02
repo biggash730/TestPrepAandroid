@@ -23,6 +23,8 @@ import { PhotoPage } from '../pages/photo/photo';
 import { UpdateProfilePage } from '../pages/update-profile/update-profile';
 import { SettingsPage } from '../pages/settings/settings';
 import { SubscriptionPage } from '../pages/subscription/subscription';
+import { PaymentsPage } from '../pages/payments/payments';
+import { AddSubscriptionPage } from '../pages/add-subscription/add-subscription';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,7 +58,9 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     TermsPage,
     PrivacyPage,
     SupportPage,
-    SubscriptionPage
+    SubscriptionPage,
+    PaymentsPage,
+    AddSubscriptionPage
   ],
   imports: [
     BrowserModule,
@@ -81,7 +85,9 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     TermsPage,
     PrivacyPage,
     SupportPage,
-    SubscriptionPage
+    SubscriptionPage,
+    PaymentsPage,
+    AddSubscriptionPage
   ],
   providers: [
     StatusBar,

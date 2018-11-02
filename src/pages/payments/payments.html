@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <ion-title>Payments</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-card *ngIf="payments.length > 0">
+            <ion-card-content>
+                <ion-row class="centerSpinner">
+                    <ion-col col-12>
+                        No payment records found.
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let pay of payments" style=" border: 2px solid #009688;">
+            <ion-item>
+                <p text-right><span ng-class="setStatus(pay.status)">{{pay.status}}</span></p>
+                <h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{pay.plan}}</h1>
+                <p>Date: {{pay.createdAt | date:'medium'}}</p>
+                <ion-row>
+                    <ion-col col-4 text-right>
+                        <div>Reference:</div>
+                        <div>Account Name:</div>
+                        <div>Amount:</div>
+                        <div>Duration:</div>
+                    </ion-col>
+                    <ion-col col-8 text-left>
+                        <div>{{pay.reference}}</div>
+                        <div>{{pay.name}}</div>
+                        <div>{{pay.amount | currency:'GHS '}}</div>
+                        <div>{{pay.duration}} days</div>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+        <button ion-button full (click)="loadMore()" [hidden]="!(total > payments.length)" *ngIf="payments">Load More</button>
+    </ion-list>
+</ion-content>

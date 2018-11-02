@@ -49,6 +49,22 @@ export class BackendProvider {
         return this.http.post(this.userService.baseUrl + "subscriptions/query",obj)
             .map(res => res.json());
     }
+    deleteSubscription(id) {
+        return this.http.delete(this.userService.baseUrl + "subscriptions?id="+id)
+            .map(res => res.json());
+    }
+    getPayments(obj) {
+        return this.http.post(this.userService.baseUrl + "payments/query",obj)
+            .map(res => res.json());
+    }
+    getSubscriptionPlans() {
+        return this.http.get(this.userService.baseUrl + "plans/getpaidplans")
+            .map(res => res.json());
+    }
+    addSubscriptionPlan(id) {
+        return this.http.get(this.userService.baseUrl + "subscriptions/add?planId="+id)
+            .map(res => res.json());
+    }
 
     
 

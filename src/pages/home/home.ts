@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { UserDataProvider } from '../../providers/user-data';
 import { LoginPage } from '../login/login';
 import { SettingsPage } from '../settings/settings';
+import { SubscriptionPage } from '../subscription/subscription';
 
 @Component({
   selector: 'page-home',
@@ -67,6 +68,9 @@ export class HomePage {
   }
   openStats() {
     this.navCtrl.push(SettingsPage)
+  }
+  openSubs() {
+    this.navCtrl.push(SubscriptionPage)
   }
 
   start() {
