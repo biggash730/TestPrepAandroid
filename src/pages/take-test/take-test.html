@@ -1,20 +1,45 @@
 <ion-header>
     <ion-navbar color="nm1">
-        <ion-title>Payments</ion-title>
+        <button ion-button menuToggle>
+    <ion-icon name="md-grid"></ion-icon>
+  </button>
+        <ion-title>Take Test</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <ion-list>
-        <ion-card *ngIf="payments.length <= 0">
-            <ion-card-content>
-                <ion-row class="centerSpinner">
-                    <ion-col col-12>
-                        No payment records found.
-                    </ion-col>
-                </ion-row>
-            </ion-card-content>
-        </ion-card>
+    <ion-slides pager="false" loop="false">
+
+        <ion-slide style="vertical-align:top">
+            <h2>Select Profession</h2>
+            <ion-list>
+                <ion-card *ngFor="let kind of kinds" style=" border: 2px solid #9a780d;" (click)="kindSelected(kind.id)">
+                    <ion-item>
+                        <h1 style="text-align: center; font-size: 3.5rem;">{{kind.name}}</h1>
+                    </ion-item>
+                </ion-card>
+            </ion-list>
+        </ion-slide>
+
+        <ion-slide style="vertical-align:top">
+            <h2>Select Field</h2>
+        </ion-slide>
+
+        <ion-slide style="vertical-align:top">
+            <h2>Select Categories</h2>
+        </ion-slide>
+        <ion-slide style="vertical-align:top">
+            <h2>Timer Settings</h2>
+        </ion-slide>
+        <ion-slide style="vertical-align:top">
+            <h2>Start Test</h2>
+        </ion-slide>
+        <ion-slide style="vertical-align:top">
+            <h2>Show Results</h2>
+        </ion-slide>
+
+    </ion-slides>
+    <!--<ion-list>
         <ion-card *ngFor="let pay of payments" style=" border: 2px solid #009688;">
             <ion-item>
                 <p text-right><span ng-class="setStatus(pay.status)">{{pay.status}}</span></p>
@@ -37,5 +62,5 @@
             </ion-item>
         </ion-card>
         <button ion-button full (click)="loadMore()" [hidden]="!(total > payments.length)" *ngIf="payments">Load More</button>
-    </ion-list>
+    </ion-list>-->
 </ion-content>

@@ -36,6 +36,7 @@ export class SubscriptionPage {
     });
     this.subscriptions = []
     //this.start();
+    this.active = null;
   }
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ProfilePage');
@@ -69,6 +70,7 @@ export class SubscriptionPage {
     loader.present().then(() => {
       self.backendService.getActiveSubscription().subscribe(data => {
         loader.dismissAll();
+        self.active = null;
         if (data.success) {
           self.active = data.data;
         }
@@ -135,7 +137,7 @@ export class SubscriptionPage {
   start() {
     this.page = 1;
     this.filter = { pager: { page: this.page, size: this.size } };
-    this.active = {};
+    this.active = null;
     this.subscriptions = []
     this.getActive()
     this.getList()

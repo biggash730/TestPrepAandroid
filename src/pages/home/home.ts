@@ -6,6 +6,7 @@ import { UserDataProvider } from '../../providers/user-data';
 import { LoginPage } from '../login/login';
 import { SettingsPage } from '../settings/settings';
 import { SubscriptionPage } from '../subscription/subscription';
+import { TakeTestPage } from '../take-test/take-test';
 
 @Component({
   selector: 'page-home',
@@ -72,11 +73,12 @@ export class HomePage {
   openSubs() {
     this.navCtrl.push(SubscriptionPage)
   }
+  openTest() {
+    this.navCtrl.push(TakeTestPage)
+  }
 
   start() {
     this.trackSignout()
-    this.stats = {}
-    //this.getStats();
   }
 
 }

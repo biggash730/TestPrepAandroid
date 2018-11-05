@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { IntroPage } from '../pages/intro/intro';
 import { SettingsPage } from '../pages/settings/settings';
 import { SubscriptionPage } from '../pages/subscription/subscription';
+import { TakeTestPage } from '../pages/take-test/take-test';
 
 @Component({
   templateUrl: 'app.html'
@@ -78,6 +79,9 @@ export class MyApp {
         break;
       case "subscriptions":
         this.nav.setRoot(SubscriptionPage);
+        break;
+      case "test":
+        this.nav.setRoot(TakeTestPage);
         break;
 
       default:
