@@ -7,29 +7,108 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content #pageTop>
     <ion-slides pager="false" loop="false">
-
         <ion-slide style="vertical-align:top">
-            <h2>Select Profession</h2>
-            <ion-list>
+            <ion-header>
+                <ion-toolbar no-border>
+                    <ion-row>
+                        <ion-col col-12>Select Profession</ion-col>
+                    </ion-row>
+                </ion-toolbar>
+            </ion-header>
+            <ion-list style="margin-top: 65px;">
                 <ion-card *ngFor="let kind of kinds" style=" border: 2px solid #9a780d;" (click)="kindSelected(kind.id)">
-                    <ion-item>
-                        <h1 style="text-align: center; font-size: 3.5rem;">{{kind.name}}</h1>
+                    <ion-item text-wrap>
+                        <h1 style="text-align: center; font-size: 3rem;">{{kind.name}}</h1>
                     </ion-item>
                 </ion-card>
             </ion-list>
         </ion-slide>
-
         <ion-slide style="vertical-align:top">
-            <h2>Select Field</h2>
+            <ion-header>
+                <ion-toolbar no-border>
+                    <ion-row>
+                        <ion-col col-2>
+                            <button ion-button small dark icon-start (click)="goBack()">
+                    <ion-icon name="md-arrow-back"></ion-icon> 
+                    Back
+                </button>
+                        </ion-col>
+                        <ion-col col-10>Select Field</ion-col>
+                    </ion-row>
+                </ion-toolbar>
+            </ion-header>
+            <ion-list style="margin-top: 65px;">
+                <ion-card *ngFor="let type of types" style=" border: 2px solid #0d6d9a;" (click)="typeSelected(type.id)">
+                    <ion-item text-wrap>
+                        <h1 style="text-align: center; font-size: 3rem;">{{type.name}}</h1>
+                    </ion-item>
+                </ion-card>
+            </ion-list>
         </ion-slide>
-
         <ion-slide style="vertical-align:top">
-            <h2>Select Categories</h2>
+            <ion-header>
+                <ion-toolbar no-border>
+                    <ion-row>
+                        <ion-col col-2>
+                            <button ion-button small dark icon-start (click)="goBack()">
+                        <ion-icon name="md-arrow-back"></ion-icon> 
+                        Back
+                    </button>
+                        </ion-col>
+                        <ion-col col-10>Select Categories</ion-col>
+                    </ion-row>
+                </ion-toolbar>
+            </ion-header>
+            <ion-list style="margin-top: 65px;">
+                <ion-item-divider text-left>
+                    <ion-label>{{ data.SelectAll ? 'Deselect All' : 'Select All'}}</ion-label>
+                    <ion-checkbox color="secondary" [(ngModel)]="data.SelectAll" (ionChange)="selectAllCategories()"></ion-checkbox>
+                </ion-item-divider>
+                <ion-item text-wrap *ngFor="let category of categories">
+                    <ion-label>{{category.name}}</ion-label>
+                    <ion-checkbox color="primary" [(ngModel)]="category.selected"></ion-checkbox>
+                </ion-item>
+                <button ion-button block (click)="continue()" color="primary">Continue</button>
+            </ion-list>
         </ion-slide>
         <ion-slide style="vertical-align:top">
-            <h2>Timer Settings</h2>
+            <ion-header>
+                <ion-toolbar no-border>
+                    <ion-row>
+                        <ion-col col-2>
+                            <button ion-button small dark icon-start (click)="goBack()">
+                            <ion-icon name="md-arrow-back"></ion-icon> 
+                            Back
+                        </button>
+                        </ion-col>
+                        <ion-col col-10>Test Settings</ion-col>
+                    </ion-row>
+                </ion-toolbar>
+            </ion-header>
+            <ion-list style="margin-top: 65px;">
+                <ion-item text-left>
+                    <ion-label>Enable Timed Test</ion-label>
+                    <ion-checkbox color="secondary" [(ngModel)]="data.timedTest"></ion-checkbox>
+                </ion-item>
+                <ion-item text-left>
+                    <ion-label>Number of Questions: {{data.numberOfQuestions}}</ion-label>
+                    <ion-range min="15" max="100" [(ngModel)]="data.numberOfQuestions" step="5" color="dark">
+                        <ion-label range-left>15</ion-label>
+                        <ion-label range-right>100</ion-label>
+                    </ion-range>
+                </ion-item>
+                <ion-item text-left *ngIf="data.timedTest">
+                    <ion-label>Duration: {{data.numberOfMinutes}}</ion-label>
+                    <ion-range min="10" max="60" [(ngModel)]="data.numberOfMinutes" step="5" color="dark">
+                        <ion-label range-left>10</ion-label>
+                        <ion-label range-right>60</ion-label>
+                    </ion-range>
+                </ion-item>
+
+                <button ion-button block (click)="startTest()" color="primary">Start Test</button>
+            </ion-list>
         </ion-slide>
         <ion-slide style="vertical-align:top">
             <h2>Start Test</h2>
@@ -37,30 +116,5 @@
         <ion-slide style="vertical-align:top">
             <h2>Show Results</h2>
         </ion-slide>
-
     </ion-slides>
-    <!--<ion-list>
-        <ion-card *ngFor="let pay of payments" style=" border: 2px solid #009688;">
-            <ion-item>
-                <p text-right><span ng-class="setStatus(pay.status)">{{pay.status}}</span></p>
-                <h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{pay.plan}}</h1>
-                <p>Date: {{pay.createdAt | date:'medium'}}</p>
-                <ion-row>
-                    <ion-col col-5 text-right>
-                        <div>Reference:</div>
-                        <div>Account Name:</div>
-                        <div>Amount:</div>
-                        <div>Duration:</div>
-                    </ion-col>
-                    <ion-col col-7>
-                        <div>{{pay.reference}}</div>
-                        <div>{{pay.name || ""}}</div>
-                        <div>{{pay.amount | currency:'GHS '}}</div>
-                        <div>{{pay.duration}} days</div>
-                    </ion-col>
-                </ion-row>
-            </ion-item>
-        </ion-card>
-        <button ion-button full (click)="loadMore()" [hidden]="!(total > payments.length)" *ngIf="payments">Load More</button>
-    </ion-list>-->
 </ion-content>

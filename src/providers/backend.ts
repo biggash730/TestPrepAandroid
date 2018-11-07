@@ -81,6 +81,10 @@ export class BackendProvider {
         return this.http.get(this.userService.baseUrl + "categories/getbytype?typeId="+id)
             .map(res => res.json());
     }
+    getQuestions(obj) {
+        return this.http.post(this.userService.baseUrl + "quiz/getquestions",obj)
+            .map(res => res.json());
+    }
 
     
 
