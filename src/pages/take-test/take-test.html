@@ -1,13 +1,12 @@
 <ion-header>
-    <ion-navbar color="nm1">
+    <ion-navbar color="nm1" hideBackButton="questions.length > 0">
         <button ion-button menuToggle>
     <ion-icon name="md-grid"></ion-icon>
   </button>
         <ion-title>Take Test</ion-title>
     </ion-navbar>
 </ion-header>
-
-<ion-content #pageTop>
+<ion-content>
     <ion-slides pager="false" loop="false">
         <ion-slide style="vertical-align:top">
             <ion-header>
@@ -100,7 +99,7 @@
                     </ion-range>
                 </ion-item>
                 <ion-item text-left *ngIf="data.timedTest">
-                    <ion-label>Duration: {{data.numberOfMinutes}}</ion-label>
+                    <ion-label>Duration (Minutes): {{data.numberOfMinutes}}</ion-label>
                     <ion-range min="10" max="60" [(ngModel)]="data.numberOfMinutes" step="5" color="dark">
                         <ion-label range-left>10</ion-label>
                         <ion-label range-right>60</ion-label>
@@ -111,7 +110,22 @@
             </ion-list>
         </ion-slide>
         <ion-slide style="vertical-align:top">
-            <h2>Start Test</h2>
+            <ion-header>
+                <ion-toolbar>
+                    <ion-row>
+                        <ion-col col-2>
+                            <button ion-button small color="danger" icon-start (click)="cancelTest()">
+                                                <ion-icon name="md-close"></ion-icon> 
+                                                Cancel
+                                            </button>
+                        </ion-col>
+                        <ion-col col-10><span *ngIf="data.timedTest">Time Left: {{counter | date:'HH:mm:ss'}}</span> <span *ngIf="!data.timedTest">Start Test</span> </ion-col>
+                    </ion-row>
+                </ion-toolbar>
+                <ion-toolbar>
+                    <ion-title>{{counter}}</ion-title>
+                </ion-toolbar>
+            </ion-header>
         </ion-slide>
         <ion-slide style="vertical-align:top">
             <h2>Show Results</h2>
