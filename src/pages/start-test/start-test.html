@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-toolbar color="nm1">
+        <ion-buttons start>
+            <button ion-button small color="danger" icon-start (click)="cancelTest()">
+                                <ion-icon name="md-close"></ion-icon> 
+                                Cancel
+                            </button>
+        </ion-buttons>
+        <ion-title><span *ngIf="data.timedTest">Time Left: {{counterDate | date:'HH:mm:ss'}}</span> <span *ngIf="!data.timedTest">Start Test</span></ion-title>
+        <ion-buttons end>
+
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            Category: {{question.category}}
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item text-wrap>
+                {{questionNumber}}. {{question.questionText}}
+            </ion-item>
+            <ion-list radio-group [(ngModel)]="question.answer">
+                <ion-item text-wrap>
+                    <ion-radio [value]="question.option1"></ion-radio>
+                    <ion-label>A. {{question.option1}}</ion-label>
+                </ion-item>
+                <ion-item text-wrap>
+                    <ion-radio [value]="question.option2"></ion-radio>
+                    <ion-label>B. {{question.option2}}</ion-label>
+                </ion-item>
+                <ion-item text-wrap>
+                    <ion-radio [value]="question.option3"></ion-radio>
+                    <ion-label>C. {{question.option3}}</ion-label>
+                </ion-item>
+                <ion-item text-wrap>
+                    <ion-radio [value]="question.option4"></ion-radio>
+                    <ion-label>D. {{question.option4}}</ion-label>
+                </ion-item>
+                <ion-item text-wrap *ngIf="question.option5">
+                    <ion-radio [value]="question.option5"></ion-radio>
+                    <ion-label>D. {{question.option5}}</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+        <button ion-button block color="primary" (click)="goToNext()" *ngIf="questionNumber < totalQuestions">Next Question</button>
+        <button ion-button block color="secondary" (click)="submit()" *ngIf="questionNumber == totalQuestions">Submit</button>
+    </ion-card>
+</ion-content>
+<ion-footer>
+    <ion-toolbar color="light">
+        <ion-buttons left>
+            <button ion-button icon-start color="primary" (click)="goBack()" *ngIf="questionNumber > 1">
+                  <ion-icon name="md-rewind"></ion-icon> Previous
+                </button>
+        </ion-buttons>
+        <ion-title>{{questionNumber}} of {{totalQuestions}}</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-end color="primary" (click)="goToNext()" *ngIf="questionNumber < totalQuestions">
+                    Next 
+                  <ion-icon name="md-fastforward"></ion-icon>
+                </button>
+            <button ion-button icon-end color="secondary" (click)="submit()" *ngIf="questionNumber == totalQuestions">
+                        Finish 
+                      <ion-icon name="md-checkbox"></ion-icon>
+                    </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

@@ -1,9 +1,10 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, Loading, Events, Content, ViewController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, Loading, Events, Content, ViewController, ModalController } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { BackendProvider } from '../../providers/backend';
 import { UserDataProvider } from '../../providers/user-data';
+import { StartTestPage } from '../start-test/start-test';
 //import { LoginPage } from '../login/login';
 //import { PhotoPage } from '../photo/photo';
 
@@ -29,10 +30,11 @@ export class TakeTestPage {
   categories: any[]
   questions: any[]
   counter: any
+  counterDate: any
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public backendService: BackendProvider,
-    public zone: NgZone, public storage: Storage, public userService: UserDataProvider, public alertCtrl: AlertController, public events: Events, private viewCtrl: ViewController) {
+    public zone: NgZone, public storage: Storage, public userService: UserDataProvider, public alertCtrl: AlertController, public events: Events, private viewCtrl: ViewController, public modalCtrl: ModalController) {
     this.loader = this.loadingCtrl.create({
       content: ""
     });
@@ -45,10 +47,9 @@ export class TakeTestPage {
 
   }
   ionViewDidLoad() {
+    this.slides.lockSwipes(true);
   }
   ionViewWillEnter() {
-    this.slides.lockSwipes(true);
-
     this.start()
   }
 
@@ -170,74 +171,16 @@ export class TakeTestPage {
   }
 
   startTest() {
-    var obj = { categoryIds: this.data.categoryIds, numberOfQuestions: this.data.numberOfQuestions };
-    this.loader.present();
-    this.backendService.getQuestions(obj).subscribe(data => {
-      this.loader.dismissAll();
-      if (data.success) {
-        this.questions = data.data;
-        this.viewCtrl.showBackButton(false);
-        this.beginTest()
-        this.goToNext();
-      }
-      else {
-        let alert = this.alertCtrl.create({
-          title: 'System Error',
-          subTitle: data.message,
-          buttons: ['OK']
-        });
-        alert.present();
-      }
-    }, (error) => {
-      this.loader.dismissAll();
-      console.log(error);
+    let testModal = this.modalCtrl.create(StartTestPage,this.data);
+    testModal.present();
+    testModal.onDidDismiss(data => {
+      this.data.results = data;
+      this.goToNext()
     });
-    this.loader.dismissAll();
   }
 
-  cancelTest() {
-    let alert = this.alertCtrl.create({
-      title: 'Cancel Test',
-      message: 'Do you want to cancel this test?',
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            //console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Yes',
-          handler: () => {
-            this.viewCtrl.showBackButton(true);
-            this.goBack();
-          }
-        }
-      ]
-    });
-    alert.present();
-  }
-
-  beginTest() {
-    var self = this
-    if (this.data.timedTest) {
-      this.counter = 60 * this.data.numberOfMinutes;
-      setInterval(() => {
-        if (self.counter === 0) {
-          self.markQuestions();
-        }
-        else {
-          self.counter--;
-          //self.events.publish('Counter', self.counter);          
-        }
-      }, 1000);
-    }
-
-  }
-
-  markQuestions() {
-
+  showResults(){
+    console.log(this.data)
   }
 
   start() {

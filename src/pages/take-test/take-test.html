@@ -39,9 +39,9 @@
                 </ion-toolbar>
             </ion-header>
             <ion-list style="margin-top: 65px;">
-                <ion-card *ngFor="let type of types" style=" border: 2px solid #0d6d9a;" (click)="typeSelected(type.id)">
+                <ion-card *ngFor="let type of types" style=" border-bottom: 1px solid #0d6d9a;" (click)="typeSelected(type.id)">
                     <ion-item text-wrap>
-                        <h1 style="text-align: center; font-size: 3rem;">{{type.name}}</h1>
+                        <h1 style="text-align: left; font-size: 3rem;">{{type.name}}</h1>
                     </ion-item>
                 </ion-card>
             </ion-list>
@@ -114,21 +114,57 @@
                 <ion-toolbar>
                     <ion-row>
                         <ion-col col-2>
-                            <button ion-button small color="danger" icon-start (click)="cancelTest()">
-                                                <ion-icon name="md-close"></ion-icon> 
-                                                Cancel
-                                            </button>
+                            <button ion-button small dark icon-start (click)="goBack()">
+                            <ion-icon name="md-arrow-back"></ion-icon> 
+                            Back
+                        </button>
                         </ion-col>
-                        <ion-col col-10><span *ngIf="data.timedTest">Time Left: {{counter | date:'HH:mm:ss'}}</span> <span *ngIf="!data.timedTest">Start Test</span> </ion-col>
+                        <ion-col col-10>{{(data.results.totalCorrect / data.results.totalQuestions) * 100}}% </ion-col>
                     </ion-row>
                 </ion-toolbar>
-                <ion-toolbar>
-                    <ion-title>{{counter}}</ion-title>
-                </ion-toolbar>
             </ion-header>
-        </ion-slide>
-        <ion-slide style="vertical-align:top">
-            <h2>Show Results</h2>
+            <ion-item text-wrap>
+                Categories: {{data.results.categories}}
+                <p>You answered {{data.results.totalCorrect}} out of {{data.results.totalQuestions}} questions correctly.</p>
+            </ion-item>
+            <ion-card *ngFor="let question of data.results.reviewQuestions">
+                <ion-card-header>
+                    Category: {{question.categories}}
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item text-wrap>
+                        {{questionNumber}}. {{question.questionText}}
+                    </ion-item>
+                    <ion-item text-wrap>
+                        Selected Answer: {{question.selectedOption}}
+                    </ion-item>
+                    <ion-list radio-group [(ngModel)]="question.answer">
+                        <ion-item text-wrap>
+                            <ion-radio [value]="question.option1"></ion-radio>
+                            <ion-label>A. {{question.option1}}</ion-label>
+                        </ion-item>
+                        <ion-item text-wrap>
+                            <ion-radio [value]="question.option2"></ion-radio>
+                            <ion-label>B. {{question.option2}}</ion-label>
+                        </ion-item>
+                        <ion-item text-wrap>
+                            <ion-radio [value]="question.option3"></ion-radio>
+                            <ion-label>C. {{question.option3}}</ion-label>
+                        </ion-item>
+                        <ion-item text-wrap>
+                            <ion-radio [value]="question.option4"></ion-radio>
+                            <ion-label>D. {{question.option4}}</ion-label>
+                        </ion-item>
+                        <ion-item text-wrap *ngIf="question.option5">
+                            <ion-radio [value]="question.option5"></ion-radio>
+                            <ion-label>D. {{question.option5}}</ion-label>
+                        </ion-item>
+                    </ion-list>
+                    <ion-item text-wrap>
+                        <p></p>
+                    </ion-item>
+                </ion-card-content>
+            </ion-card>
         </ion-slide>
     </ion-slides>
 </ion-content>

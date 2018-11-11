@@ -27,6 +27,7 @@ import { PaymentsPage } from '../pages/payments/payments';
 import { AddSubscriptionPage } from '../pages/add-subscription/add-subscription';
 import { MakePaymentPage } from '../pages/make-payment/make-payment';
 import { TakeTestPage } from '../pages/take-test/take-test';
+import { StartTestPage } from '../pages/start-test/start-test';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -64,7 +65,8 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     PaymentsPage,
     AddSubscriptionPage,
     MakePaymentPage,
-    TakeTestPage
+    TakeTestPage,
+    StartTestPage
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ export function httpInterceptorFactory(xhrBackend: XHRBackend, requestOptions: R
     PaymentsPage,
     AddSubscriptionPage,
     MakePaymentPage,
-    TakeTestPage
+    TakeTestPage,
+    StartTestPage
   ],
   providers: [
     StatusBar,
