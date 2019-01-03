@@ -35,7 +35,7 @@ export class StartTestPage {
     this.loader = this.loadingCtrl.create({
       content: ""
     });
-    this.data = {}
+    this.data = {results:{}}
     this.question = {}
     //this.data = this.navParams.data;
   }

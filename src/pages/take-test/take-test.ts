@@ -38,7 +38,7 @@ export class TakeTestPage {
     this.loader = this.loadingCtrl.create({
       content: ""
     });
-    this.data = {}
+    this.data = {results:{}}
     this.kinds = []
     this.types = []
     this.categories = []
@@ -63,7 +63,7 @@ export class TakeTestPage {
     });
   }
 
-  getTypes(kindId) {
+  getTypes(kindId:number) {
     this.backendService.getTypes(kindId).subscribe(data => {
       if (data.success) {
         this.types = data.data;
@@ -73,7 +73,7 @@ export class TakeTestPage {
     });
   }
 
-  kindSelected(id) {
+  kindSelected(id:number) {
     this.data.kindId = id;
     this.loader.present();
     this.backendService.getTypes(id).subscribe(data => {
@@ -97,7 +97,7 @@ export class TakeTestPage {
     this.loader.dismissAll();
   }
 
-  typeSelected(id) {
+  typeSelected(id:number) {
     this.data.kindId = id;
     this.loader.present();
     this.backendService.getCategories(id).subscribe(data => {

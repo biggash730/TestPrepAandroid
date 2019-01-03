@@ -7,6 +7,7 @@ import { LoginPage } from '../login/login';
 import { SettingsPage } from '../settings/settings';
 import { SubscriptionPage } from '../subscription/subscription';
 import { TakeTestPage } from '../take-test/take-test';
+import { ResultsPage } from '../results/results';
 
 @Component({
   selector: 'page-home',
@@ -65,7 +66,7 @@ export class HomePage {
     this.navCtrl.push(SettingsPage)
   }
   openResults() {
-    this.navCtrl.push(SettingsPage)
+    this.navCtrl.push(ResultsPage)
   }
   openStats() {
     this.navCtrl.push(SettingsPage)

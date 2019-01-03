@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar color="nm1" hideBackButton="questions.length > 0">
+        <button ion-button menuToggle>
+    <ion-icon name="md-grid"></ion-icon>
+  </button>
+        <ion-title>Results</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-card *ngIf="results.length <= 0">
+            <ion-card-content>
+                <ion-row class="centerSpinner">
+                    <ion-col col-12>
+                        No results to display.
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let result of results" style=" border: 1px solid #009688;">
+            1
+            <ion-item>
+                <!--<h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{pay.plan}}</h1>
+                <p>Date: {{pay.createdAt | date:'medium'}}</p>
+                <ion-row>
+                    <ion-col col-5 text-right>
+                        <div>Reference:</div>
+                        <div>Account Name:</div>
+                        <div>Amount:</div>
+                        <div>Duration:</div>
+                    </ion-col>
+                    <ion-col col-7>
+                        <div>{{pay.reference}}</div>
+                        <div>{{pay.name || ""}}</div>
+                        <div>{{pay.amount | currency:'GHS '}}</div>
+                        <div>{{pay.duration}} days</div>
+                    </ion-col>
+                </ion-row>-->
+            </ion-item>
+        </ion-card>
+        <button ion-button full (click)="loadMore()" [hidden]="!(total > results.length)" *ngIf="results">Load More</button>
+    </ion-list>
+</ion-content>

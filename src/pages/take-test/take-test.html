@@ -129,11 +129,11 @@
             </ion-item>
             <ion-card *ngFor="let question of data.results.reviewQuestions">
                 <ion-card-header>
-                    Category: {{question.categories}}
+                    Category: {{question.category}}
                 </ion-card-header>
                 <ion-card-content>
                     <ion-item text-wrap>
-                        {{questionNumber}}. {{question.questionText}}
+                        {{question.questionNumber}}. {{question.questionText}}
                     </ion-item>
                     <ion-item text-wrap>
                         Selected Answer: {{question.selectedOption}}
