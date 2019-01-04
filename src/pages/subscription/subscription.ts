@@ -69,13 +69,13 @@ export class SubscriptionPage {
     });
     loader.present().then(() => {
       self.backendService.getActiveSubscription().subscribe(data => {
-        loader.dismissAll();
+        loader.dismiss();
         self.active = null;
         if (data.success) {
           self.active = data.data;
         }
       }, (error) => {
-        loader.dismissAll();
+        loader.dismiss();
       });
     })
   }

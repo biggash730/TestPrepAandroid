@@ -62,7 +62,7 @@ export class StartTestPage {
     var obj = { categoryIds: this.data.categoryIds, numberOfQuestions: this.data.numberOfQuestions };
     this.loader.present();
     this.backendService.getQuestions(obj).subscribe(data => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       if (data.success) {
         this.questions = data.data;
         this.totalQuestions = data.data.length
@@ -78,10 +78,10 @@ export class StartTestPage {
         alert.present();
       }
     }, (error) => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       console.log(error);
     });
-    this.loader.dismissAll();
+    this.loader.dismiss();
   }
 
   cancelTest() {
@@ -155,12 +155,12 @@ export class StartTestPage {
     }
     this.loader.present();
     this.backendService.markQuestions(obj).subscribe(data => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       if (data.success) {
         this.viewCtrl.dismiss(data.data)
       }
       else {
-        this.loader.dismissAll();
+        this.loader.dismiss();
         let alert = this.alertCtrl.create({
           title: 'System Error',
           subTitle: data.message,
@@ -169,10 +169,10 @@ export class StartTestPage {
         alert.present();
       }
     }, (error) => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       console.log(error);
     });
-    this.loader.dismissAll();
+    this.loader.dismiss();
   }
 
   start() {

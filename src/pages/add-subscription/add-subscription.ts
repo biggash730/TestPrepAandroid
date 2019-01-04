@@ -78,12 +78,12 @@ export class AddSubscriptionPage {
             });
             loader.present().then(() => {
               self.backendService.addSubscriptionPlan(planId).subscribe(data => {
-                loader.dismissAll();
+                loader.dismiss();
                 if (data.success) {
                   self.navCtrl.pop();
                 }
               }, (error) => {
-                loader.dismissAll();
+                loader.dismiss();
               });
             })
           }

@@ -41,13 +41,13 @@ export class ResultsPage {
   getList() {
     this.loader.present()
     this.backendService.getResults(this.filter).subscribe(data => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       if (data.success) {
         this.results = data.data;
         this.total = data.total
       }
     }, (error) => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       console.log(error);
     });
   }

@@ -77,7 +77,7 @@ export class TakeTestPage {
     this.data.kindId = id;
     this.loader.present();
     this.backendService.getTypes(id).subscribe(data => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       if (data.success) {
         this.types = data.data;
         this.goToNext();
@@ -91,17 +91,17 @@ export class TakeTestPage {
         alert.present();
       }
     }, (error) => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       //console.log(error);
     });
-    this.loader.dismissAll();
+    this.loader.dismiss();
   }
 
   typeSelected(id:number) {
     this.data.kindId = id;
     this.loader.present();
     this.backendService.getCategories(id).subscribe(data => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       if (data.success) {
         this.categories = data.data;
         this.data.SelectAll = false;
@@ -116,10 +116,10 @@ export class TakeTestPage {
         alert.present();
       }
     }, (error) => {
-      this.loader.dismissAll();
+      this.loader.dismiss();
       console.log(error);
     });
-    this.loader.dismissAll();
+    this.loader.dismiss();
   }
 
   goBack() {

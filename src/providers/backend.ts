@@ -93,6 +93,18 @@ export class BackendProvider {
         return this.http.post(this.userService.baseUrl + "quiz/getresultx",obj)
             .map(res => res.json());
     }
+    getTestCompositionByCategories() {
+        return this.http.get(this.userService.baseUrl + "quiz/getTestCompositionByCategories")
+            .map(res => res.json());
+    }
+    getPercentageCorrectByCategories() {
+        return this.http.get(this.userService.baseUrl + "quiz/getPercentageCorrectByCategories")
+            .map(res => res.json());
+    }
+    getleastperformedcategories() {
+        return this.http.get(this.userService.baseUrl + "quiz/getleastperformedcategories")
+            .map(res => res.json());
+    }
 
     
 

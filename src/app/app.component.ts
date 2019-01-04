@@ -12,6 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { TakeTestPage } from '../pages/take-test/take-test';
 import { ResultsPage } from '../pages/results/results';
+import { StatsPage } from '../pages/stats/stats';
 
 @Component({
   templateUrl: 'app.html'
@@ -84,8 +85,11 @@ export class MyApp {
       case "test":
         this.nav.setRoot(TakeTestPage);
         break;
-        case "results":
+      case "results":
         this.nav.setRoot(ResultsPage);
+        break;
+      case "stats":
+        this.nav.setRoot(StatsPage);
         break;
       default:
         this.nav.setRoot(HomePage);

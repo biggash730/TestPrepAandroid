@@ -8,6 +8,7 @@ import { SettingsPage } from '../settings/settings';
 import { SubscriptionPage } from '../subscription/subscription';
 import { TakeTestPage } from '../take-test/take-test';
 import { ResultsPage } from '../results/results';
+import { StatsPage } from '../stats/stats';
 
 @Component({
   selector: 'page-home',
@@ -36,16 +37,6 @@ export class HomePage {
 
   }
 
-  getStats() {
-    this.backendService.getStats().subscribe(data => {
-      if (data.success) {
-        this.stats = data.data;
-      }
-    }, (error) => {
-      console.log(error);
-    });
-  }
-
   trackSignout() {
     this.events.subscribe('User: SignOut', () => {
       this.backendService.logout().subscribe(data => {
@@ -62,19 +53,16 @@ export class HomePage {
   openSettings() {
     this.navCtrl.push(SettingsPage)
   }
-  openTests() {
-    this.navCtrl.push(SettingsPage)
-  }
   openResults() {
     this.navCtrl.push(ResultsPage)
   }
   openStats() {
-    this.navCtrl.push(SettingsPage)
+    this.navCtrl.push(StatsPage)
   }
   openSubs() {
     this.navCtrl.push(SubscriptionPage)
   }
-  openTest() {
+  openTests() {
     this.navCtrl.push(TakeTestPage)
   }
 

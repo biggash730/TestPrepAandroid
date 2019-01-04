@@ -52,7 +52,7 @@ export class LoginPage {
 
       this.backendService.login(this.phoneNumber).subscribe(data => {
           //console.log(data)
-          loader.dismissAll();
+          loader.dismiss();
           if(data.success) 
             {
               let alert = this.alertCtrl.create({
@@ -73,10 +73,10 @@ export class LoginPage {
               alert.present();
             }
         }, (error) => {
-            loader.dismissAll();
+            loader.dismiss();
             console.log(error);
       });
-      loader.dismissAll();
+      loader.dismiss();
     }
     }
 }

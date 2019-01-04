@@ -88,13 +88,13 @@ export class PhotoPage {
     loader.present().then(() => {
       self.backendService.getProfile().subscribe(data => {
         //console.log(data)
-        loader.dismissAll();
+        loader.dismiss();
         if (data.success) {
           self.profile = data.data;
         }
       }, (error) => {
         //console.log(error);
-        loader.dismissAll();
+        loader.dismiss();
       });
     })
 

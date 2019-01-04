@@ -52,7 +52,7 @@ var obj = {
   code: this.code
 }
       this.backendService.verify(obj).subscribe(data => {
-          loader.dismissAll();
+          loader.dismiss();
           if(data.success) 
             {
               let alert = this.alertCtrl.create({
@@ -75,10 +75,10 @@ var obj = {
               alert.present();
             }
         }, (error) => {
-            loader.dismissAll();
+            loader.dismiss();
             console.log(error);
       });
-      loader.dismissAll();
+      loader.dismiss();
     }
     }
 }

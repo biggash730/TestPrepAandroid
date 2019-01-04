@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-navbar color="nm1">
+        <button ion-button menuToggle>
+      <ion-icon name="md-grid"></ion-icon>
+    </button>
+        <ion-title>Statistics</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-card>
+            <ion-item-divider color="light">
+                Test Composition by Categories
+            </ion-item-divider>
+            <ion-card-content>
+                <canvas #tcbcCanvas></canvas>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-item-divider color="light">
+                Percentage Correct by Categories
+            </ion-item-divider>
+            <ion-card-content>
+                <canvas #pcbcCanvas></canvas>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-item-divider color="light">
+                Least Performed Categories (
+                < 50%) </ion-item-divider>
+                    <ion-item text-wrap *ngFor="let itm of categories">
+                        <p>{{itm.label}}</p>
+                        <span class="badge badge-calm">{{itm.data | number:'1.2-2'}}%</span>
+                    </ion-item>
+        </ion-card>
+        <ion-card text-center>
+            <ion-item-divider color="light">
+                Prediction of Student Passing
+            </ion-item-divider>
+            <ion-item text-wrap>
+                <ion-row>
+                    <ion-col col-6 text-center>
+                        <h2>
+                            Scoring Interval
+                        </h2>
+                    </ion-col>
+                    <ion-col col-6 text-center>
+                        <h2>
+                            Performance Level
+                        </h2>
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item text-wrap style="background-color: green;">
+                <ion-row>
+                    <ion-col col-6 text-center>
+                        &#62;69%
+                    </ion-col>
+                    <ion-col col-6 text-center>
+                        High likelyhood of success on certification exam
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item text-wrap style="background-color: yellow;">
+                <ion-row>
+                    <ion-col col-6 text-center>
+                        62% - 68%
+                    </ion-col>
+                    <ion-col col-6 text-center>
+                        At risk student
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+            <ion-item text-wrap style="background-color: #EF3223;">
+                <ion-row>
+                    <ion-col col-6 text-center>
+                        &#60;62%
+                    </ion-col>
+                    <ion-col col-6 text-center>
+                        Unlikely success on certification exam
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+        </ion-card>
+    </ion-list>
+</ion-content>

@@ -72,7 +72,7 @@ export class UpdateProfilePage {
 
       self.backendService.updateProfile(self.profile).subscribe(data => {
         //console.log(data)
-        loader.dismissAll();
+        loader.dismiss();
         if (data.success) {
           self.navCtrl.pop();
           self.events.publish('Profile: Updated');
@@ -86,7 +86,7 @@ export class UpdateProfilePage {
           alert.present();
         }
       }, (error) => {
-        loader.dismissAll();
+        loader.dismiss();
         console.log(error);
       });
     })
