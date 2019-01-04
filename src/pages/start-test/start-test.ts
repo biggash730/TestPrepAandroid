@@ -28,6 +28,7 @@ export class StartTestPage {
   totalQuestions = 0;
   questionNumber = 1;
   interval : any
+  duration = 0
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController, public backendService: BackendProvider,
@@ -109,6 +110,7 @@ export class StartTestPage {
     var self = this
     if (this.data.timedTest) {
       this.counter = 60 * this.data.numberOfMinutes;
+      this.duration = this.counter;
       this.interval = setInterval(() => {
         if (self.counter === 0) {
           self.submit();
@@ -146,8 +148,13 @@ export class StartTestPage {
   }
 
   markQuestions() {
+    var obj = {
+      duration: this.duration,
+      questions: this.questions,
+      timeTaken: (this.duration - this.counter)
+    }
     this.loader.present();
-    this.backendService.markQuestions(this.questions).subscribe(data => {
+    this.backendService.markQuestions(obj).subscribe(data => {
       this.loader.dismissAll();
       if (data.success) {
         this.viewCtrl.dismiss(data.data)

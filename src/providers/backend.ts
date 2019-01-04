@@ -90,7 +90,7 @@ export class BackendProvider {
             .map(res => res.json());
     }
     getResults(obj) {
-        return this.http.post(this.userService.baseUrl + "quiz/getresults",obj)
+        return this.http.post(this.userService.baseUrl + "quiz/getresultx",obj)
             .map(res => res.json());
     }
 

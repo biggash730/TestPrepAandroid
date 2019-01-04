@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content>
     <ion-list>
-        <ion-card *ngIf="results.length <= 0">
+        <ion-card *ngIf="results.length <= 0" style=" border: 1px solid #009688;">
             <ion-card-content>
                 <ion-row class="centerSpinner">
                     <ion-col col-12>
@@ -18,24 +18,24 @@
             </ion-card-content>
         </ion-card>
         <ion-card *ngFor="let result of results" style=" border: 1px solid #009688;">
-            1
-            <ion-item>
-                <!--<h1><span style="color: #a4a4a4;font-size: 2rem;">Plan:</span> {{pay.plan}}</h1>
-                <p>Date: {{pay.createdAt | date:'medium'}}</p>
+            <ion-item text-wrap>
+                <p>Date: {{result.date | date:'medium'}}</p>
+                <h1><span style="color: #a4a4a4;font-size: 2rem;">Percentage:</span> {{(result.totalCorrect/result.totalQuestions) *100 | number : '1.2-2'}}%</h1>
+                <p>Categories: {{result.categories}}</p>
                 <ion-row>
-                    <ion-col col-5 text-right>
-                        <div>Reference:</div>
-                        <div>Account Name:</div>
-                        <div>Amount:</div>
+                    <ion-col col-7 text-left>
+                        <div>Total Questions:</div>
+                        <div>Total Correct:</div>
                         <div>Duration:</div>
+                        <div>Time Taken:</div>
                     </ion-col>
-                    <ion-col col-7>
-                        <div>{{pay.reference}}</div>
-                        <div>{{pay.name || ""}}</div>
-                        <div>{{pay.amount | currency:'GHS '}}</div>
-                        <div>{{pay.duration}} days</div>
+                    <ion-col col-5 text-left>
+                        <div>{{result.totalCorrect}}</div>
+                        <div>{{result.totalQuestions}}</div>
+                        <div>{{result.duration}} secs</div>
+                        <div>{{result.timeTaken}} secs</div>
                     </ion-col>
-                </ion-row>-->
+                </ion-row>
             </ion-item>
         </ion-card>
         <button ion-button full (click)="loadMore()" [hidden]="!(total > results.length)" *ngIf="results">Load More</button>

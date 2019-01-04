@@ -53,7 +53,7 @@ export class ResultsPage {
   }
 
   loadMore() {
-    this.filter.pager.page = this.filter.pager.page + 1;
+    this.filter.page = this.filter.page + 1;
     this.getList()
   }
 
@@ -66,7 +66,7 @@ export class ResultsPage {
 
   start() {
     this.page = 1;
-    this.filter = { pager: { page: this.page, size: this.size } };
+    this.filter = { page: this.page, size: this.size };
     this.results = []
     this.getList()
   }
