@@ -41,31 +41,31 @@ export class StatsPage {
   getTestCompositionByCategories() {
     this.backendService.getTestCompositionByCategories().subscribe(data => {
       if (data.success) {
-        this.tcbcChart = new Chart(this.tcbcCanvas.nativeElement, { 
+        this.tcbcChart = new Chart(this.tcbcCanvas.nativeElement, {
           type: 'doughnut',
           data: {
-              labels: data.data.labels,
-              datasets: [{
-                  label: 'Test Composition by Categories',
-                  data: data.data.data,
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
-                      "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                  ]
-              }]
+            labels: data.data.labels,
+            datasets: [{
+              label: 'Test Composition by Categories',
+              data: data.data.data,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ]
+            }]
           }
 
-      });
+        });
       }
     }, (error) => {
       console.log(error);
@@ -75,32 +75,32 @@ export class StatsPage {
   getPercentageCorrectByCategories() {
     this.backendService.getPercentageCorrectByCategories().subscribe(data => {
       if (data.success) {
-        this.pcbcChart = new Chart(this.pcbcCanvas.nativeElement, { 
+        this.pcbcChart = new Chart(this.pcbcCanvas.nativeElement, {
           type: 'pie',
           data: {
-              labels: data.data.labels,
-              datasets: [{
-                  label: 'Percentage Correct by Categories',
-                  data: data.data.data,
-                  backgroundColor: [
-                      'rgba(255, 99, 132, 0.2)',
-                      'rgba(54, 162, 235, 0.2)',
-                      'rgba(255, 206, 86, 0.2)',
-                      'rgba(75, 192, 192, 0.2)',
-                      'rgba(153, 102, 255, 0.2)',
-                      'rgba(255, 159, 64, 0.2)',
-                      "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                  ]
-              }]
+            labels: data.data.labels,
+            datasets: [{
+              label: 'Percentage Correct by Categories',
+              data: data.data.data,
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+              ]
+            }]
           }
 
-      });
-      
+        });
+
       }
     }, (error) => {
       console.log(error);
@@ -118,14 +118,6 @@ export class StatsPage {
     });
   };
 
-
-  doRefresh(refresher) {
-    this.start()
-    setTimeout(() => {
-      refresher.complete();
-    }, 2000);
-  }
-
   start() {
     this.loader.present()
     setTimeout(() => {
@@ -135,7 +127,7 @@ export class StatsPage {
     }, 1000);
     setTimeout(() => {
       this.loader.dismiss();
-    }, 5000);
+    }, 3000);
 
   }
 }
